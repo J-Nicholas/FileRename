@@ -12,26 +12,24 @@ import tkinter as tk
 from tkinter import filedialog
 import sys
 
-print("Welcome to FileRename\n" +
+print("Welcome to File Re:name\n" +
       "Please select the files that you wish to rename\n")
 
 input("Press Enter to begin.")
 
 root = tk.Tk()
 root.withdraw()
-files_to_rename = filedialog.askopenfiles(mode="r")
-
-# closing these files so they can be renamed. 
-for doc in files_to_rename:
-    doc.close()     # opening them was byproduct of getting filenames quickly    
+files_to_rename = filedialog.askopenfilenames()
+root.destroy()
 
 if len(files_to_rename) == 0:
     sys.exit("Did not select any files.\nExiting...")
 
-new_filenames = input("Note that all files will be given the same name plus an index.\n" +
-                      "What would like to rename the files to? ")
+new_filenames = input("\x1b[1;36;40mNote that all files will be given the same name plus an index.\n" +
+                      "\033[0;0mWhat would like to rename the files to? ")
 
 if rename_files(files_to_rename, new_filenames):
     print("Success! Renamed files.")
+
 else:
     print("Error. Could not rename files.")
