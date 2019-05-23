@@ -25,8 +25,9 @@ root.destroy()
 if len(files_to_rename) == 0:
     sys.exit("Did not select any files.\nExiting...")
 
-new_filenames = input("\x1b[1;36;40mNote that all files will be given the same name plus an index.\n" +
-                      "\033[0;37;40mWhat would like to rename the files to? ")
+new_filenames = input("\x1b[1;36;40mNote that all files will be given the same name plus an index.\033[0m\n" 
+                      "What would like to rename the files to? ")
+
 
 if rename_files(files_to_rename, new_filenames):
     print("Success! Renamed files.")
