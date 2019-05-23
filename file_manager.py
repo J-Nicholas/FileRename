@@ -2,8 +2,6 @@
 This module is responsible for renaming files
 """
 from pathlib import Path
-import os
-import platform
 
 
 def rename_files(files: list, new_file_name: str) -> bool:
@@ -25,10 +23,11 @@ def rename_files(files: list, new_file_name: str) -> bool:
         path = Path(rf"{item}")
 
         if path.exists():
+            # Path class takes care of path slashes depending on system
             new_path = Path(str(path.parent) + "/" + new_file_name +
                             str(index) + path.suffix)
             path.replace(new_path)
-            print(platform.system())
+
         else:
             print("Path did not exist. Check file path for errors.")
             return False
