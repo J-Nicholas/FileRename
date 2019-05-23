@@ -26,7 +26,7 @@ if len(files_to_rename) == 0:
     sys.exit("Did not select any files.\nExiting...")
 
 new_filenames = input("\x1b[1;36;40mNote that all files will be given the same name plus an index.\n" +
-                      "\033[0;0mWhat would like to rename the files to? ")
+                      "\033[0;40mWhat would like to rename the files to? ")
 
 if rename_files(files_to_rename, new_filenames):
     print("Success! Renamed files.")
