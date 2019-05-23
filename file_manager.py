@@ -25,8 +25,9 @@ def rename_files(files: list, new_file_name: str) -> bool:
         if path.exists():
             new_path = str(path.parent) + "\\" + new_file_name + \
                 str(index) + path.suffix
-            path.replace(new_path)
+            # path.replace(new_path)
 
+            path.rename(new_path)
         else:
             print("Path did not exist. Check file path for errors.")
             return False
