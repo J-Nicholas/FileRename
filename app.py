@@ -7,10 +7,11 @@ an index will be supplied to the files based on specified sorting method
 Author: Johnathan Nicholas 
 Date: 20/05/2019
 """
-from rename_file_manager import rename_files
-from rename_file_manager import list_files
-from rename_menu import RenameMenu as menu
+from src.rename_file_manager import rename_files
+from src.rename_file_manager import list_files
+from rename_menu import menu_prompt
 from tkinter import filedialog
+from rename_menu import Prompts
 import tkinter as tk
 import sys
 
@@ -18,7 +19,7 @@ import sys
 print("Welcome to File Re:name\n" +
       "Please select the files that you wish to rename\n")
 
-input("Press Enter to begin.")
+input("Press Enter to begin.\n")
 
 # file dialog
 root = tk.Tk()
@@ -36,16 +37,19 @@ while(True):
         "Would you like to change order of files first? (y/n)")
     if sort_response.lower() == "y":
 
-        sort_choice = menu.get_sort_choice()
-        # TODO write sorting functionality
-        print("Sort choice:",sort_choice)
+        sort_type = menu_prompt(Prompts.SORT_MENU)
+        sort_direction = menu_prompt(Prompts.SORT_DIRECTION_MENU)
+        
+        # TODO verify that menu options are correct.
+        print("Sorting by:",sort_type)
+
         break
     elif sort_response.lower() == "n":
         break
     else:
         print("\033[31;1;40mError. Invalid input.\033[0m")
 
- # getting new file name stem
+# getting new file name stem
 new_filenames = input("\x1b[1;36;40mNote that all files will be given the same name plus an index.\033[0m\n"
                       "What would like to rename the files to? ")
 

@@ -2,8 +2,7 @@
 This module is responsible for renaming files
 """
 from pathlib import Path
-from platform import system
-import os
+from rename_menu import clear_terminal
 
 
 def rename_files(files: list, new_file_name: str) -> bool:
@@ -37,13 +36,8 @@ def rename_files(files: list, new_file_name: str) -> bool:
 
 
 def list_files(files: list):
-
-    # clear terminal based on OS
-    os.system('cls') if system().lower().startswith(
-        "win") else os.system('clear')
-
+    # clear_terminal()
     print("\033[1; 37; 40mFiles to be renamed:\033[0m")
-
     for index, document in enumerate(files, start=1):
         print(f"\033[1;37;40m{index}\033[0m: {Path(document).name}")
     print()  # spacer
